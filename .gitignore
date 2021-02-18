@@ -25,3 +25,6 @@ mnist_nx-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+# Downloaded source data
+/data
