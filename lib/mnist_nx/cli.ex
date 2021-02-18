@@ -3,15 +3,24 @@ defmodule MnistNx.CLI do
 
   alias MnistNx.Command
 
-  name "mnist"
-  description "Mnist"
+  name("mnist")
+  description("Mnist")
 
   command :download do
-    aliases [:d]
-    description "Download data"
+    aliases([:d])
+    description("Download data")
 
     run context do
       Command.Download.run(context)
+    end
+  end
+
+  command :train do
+    aliases([:t])
+    description("Train network")
+
+    run context do
+      Command.Train.run(context)
     end
   end
 end

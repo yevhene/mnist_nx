@@ -4,7 +4,7 @@ defmodule MnistNx.Command.Download do
   @data_dir File.cwd!() |> Path.join("data")
 
   def run(_) do
-    IO.puts "Downloading data from #{@source_url}"
+    IO.puts("Downloading data from #{@source_url}")
 
     File.mkdir(@data_dir)
 
@@ -12,11 +12,11 @@ defmodule MnistNx.Command.Download do
 
     source_files() |> Enum.map(&download_file/1)
 
-    IO.puts "Downloading successfuly finished"
+    IO.puts("Downloading successfuly finished")
   end
 
   defp download_file(file) do
-    IO.puts "Downloading #{file}"
+    IO.puts("Downloading #{file}")
 
     %HTTPoison.Response{body: body} =
       HTTPoison.get!(URI.merge(@source_url, file))
@@ -26,6 +26,6 @@ defmodule MnistNx.Command.Download do
 
   defp source_files do
     Tuple.to_list(Application.get_env(:mnist_nx, :train)) ++
-    Tuple.to_list(Application.get_env(:mnist_nx, :test))
+      Tuple.to_list(Application.get_env(:mnist_nx, :test))
   end
 end
