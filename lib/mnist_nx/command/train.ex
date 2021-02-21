@@ -25,6 +25,7 @@ defmodule MnistNx.Command.Train do
       |> Nx.to_batched_list(30)
 
     train(x, y)
+    |> IO.inspect()
   end
 
   defp train(x, y) do
@@ -37,6 +38,7 @@ defmodule MnistNx.Command.Train do
         IO.puts("epoch #{e}, batch #{b}")
         Model.update(params, x, y)
     end
+    |> Nx.backend_transfer()
   end
 
   defp to_one_hot(%Nx.Tensor{} = t) do

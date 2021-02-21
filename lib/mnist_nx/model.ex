@@ -1,6 +1,8 @@
 defmodule MnistNx.Model do
   import Nx.Defn
 
+  @default_defn_compiler {EXLA, run_options: [keep_on_device: true]}
+
   defn init_params do
     w1 = Nx.random_normal({784, 128}, 0.0, 0.1, names: [:input, :hidden])
     b1 = Nx.random_normal({128}, 0.0, 0.1, names: [:hidden])
